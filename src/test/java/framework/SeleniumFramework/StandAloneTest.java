@@ -42,7 +42,7 @@ public class StandAloneTest {
 
 		List<WebElement> cartProducts = driver.findElements(By.cssSelector(".cartSection h3"));
 		Boolean match = cartProducts.stream()
-				.anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(ProductName));
+				.anyMatch(cartProduct      -> cartProduct.getText().equalsIgnoreCase(ProductName));
 		Assert.assertTrue(match);
 		driver.close();
 		System.out.println("Executed");
