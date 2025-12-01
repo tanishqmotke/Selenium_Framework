@@ -43,6 +43,7 @@ public class SubmitOrderTest {
 		String confirmation = confirm.confirmOrder();
 		confirmation.equalsIgnoreCase(ExpectedConfirmation);
 		driver.close();
+		System.out.println("Executed");
 	}
 
 }
