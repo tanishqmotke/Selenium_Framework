@@ -19,7 +19,7 @@ public class SubmitOrderTest {
 
 		String ProductName = "ZARA COAT 3";
 		String CountryName = "India";
-		String Confirmation = " Thankyou for the order. ";
+		String ExpectedConfirmation = " Thankyou for the order. ";
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -40,7 +40,8 @@ public class SubmitOrderTest {
 		paymentpage.selectCountry(CountryName);
 		OrderConfirmation confirm = paymentpage.ClickSubmit();
 
-		confirm.confirmOrder(Confirmation);
+		String confirmation = confirm.confirmOrder();
+		confirmation.equalsIgnoreCase(ExpectedConfirmation);
 		driver.close();
 	}
 

@@ -20,9 +20,9 @@ public class OrderConfirmation extends AbstractComponent {
 	@FindBy(css="h1[class='hero-primary']")
 	WebElement confirmMessage;
 	
-	public void confirmOrder(String ConfirmationTxt) {
+	public String confirmOrder() {
 		String confirmMsg = GetText(confirmMessage);
-		confirmMsg.equalsIgnoreCase(ConfirmationTxt);
+		return confirmMsg;
 		
 	}	
 }

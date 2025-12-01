@@ -21,6 +21,9 @@ public class PaymentPage extends AbstractComponent {
 	@FindBy(css = "input[placeholder='Select Country']")
 	WebElement selectbox;
 
+	@FindBy(css = ".action__submit")
+	WebElement Submit;
+	
 	By selectBoxOption = By.cssSelector(".ta-results");
 
 	@FindBy(css = ".ta-item:nth-of-type(2)")
@@ -31,9 +34,6 @@ public class PaymentPage extends AbstractComponent {
 		waitForElementToAppear(selectBoxOption);
 		selectOptResult.click();
 	}
-
-	@FindBy(css = ".action__submit")
-	WebElement Submit;
 
 	public OrderConfirmation ClickSubmit() {
 		Submit.click();
