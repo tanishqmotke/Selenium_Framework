@@ -20,13 +20,9 @@ public class SubmitOrderTest {
 		String ProductName = "ZARA COAT 3";
 		String CountryName = "India";
 		String ExpectedConfirmation = " Thankyou for the order. ";
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
+	
 
-		LandingPage landingpage = new LandingPage(driver);
-		landingpage.goToLandingPage();
+		
 		ProductCatalogue productCatalogue = landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
 		productCatalogue.ProductVisible();
 		productCatalogue.getProductByName(ProductName);
@@ -42,7 +38,6 @@ public class SubmitOrderTest {
 
 		String confirmation = confirm.confirmOrder();
 		confirmation.equalsIgnoreCase(ExpectedConfirmation);
-		driver.close();
 		System.out.println("Executed");
 	}
 
