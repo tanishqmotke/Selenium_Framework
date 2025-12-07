@@ -27,11 +27,12 @@ public class BaseTest {
 		return driver;
 	}
 	
-	public void LaunchApplication() throws IOException {
+	public LandingPage LaunchApplication() throws IOException {
 		
 		driver = initializeDriver();
 		LandingPage landingpage = new LandingPage(driver);
 		landingpage.goToLandingPage();
+		return landingpage;
 	}
 	
 	

@@ -1,28 +1,24 @@
 package framework.SeleniumFramework;
 
-import java.time.Duration;
-
-import org.openqa.selenium.WebDriver;
-
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.testng.annotations.Test;
+import framework.TestComponents.BaseTest;
 import framework.pageobjects.Checkout;
 import framework.pageobjects.LandingPage;
 import framework.pageobjects.OrderConfirmation;
 import framework.pageobjects.PaymentPage;
 import framework.pageobjects.ProductCatalogue;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
 
-public class SubmitOrderTest {
-	public static void main(String[] args){
+public class SubmitOrderTest extends BaseTest {
+	
+	@Test
+	public void submitOrder() throws Exception {
 
 		String ProductName = "ZARA COAT 3";
 		String CountryName = "India";
 		String ExpectedConfirmation = " Thankyou for the order. ";
-	
 
-		
+		LandingPage landingpage = LaunchApplication();
 		ProductCatalogue productCatalogue = landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
 		productCatalogue.ProductVisible();
 		productCatalogue.getProductByName(ProductName);
