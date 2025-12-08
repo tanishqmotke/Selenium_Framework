@@ -23,6 +23,5 @@ public class OrderConfirmation extends AbstractComponent {
 	public String confirmOrder() {
 		String confirmMsg = GetText(confirmMessage);
 		return confirmMsg;
-		
 	}	
 }

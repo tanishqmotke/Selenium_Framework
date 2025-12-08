@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import framework.pageobjects.Checkout;
+import framework.pageobjects.OrderTest;
 
 public class AbstractComponent {
 //This will have all the reusable code
@@ -21,6 +22,9 @@ public class AbstractComponent {
 	}
 	@FindBy(css="[routerlink*='cart']")
 	WebElement cartHeader;
+	
+	@FindBy(css="[routerlink*='myorders']")
+	WebElement OrderHeader;
 	
 	public void waitForElementToAppear(By findBy) {
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -42,6 +46,13 @@ public class AbstractComponent {
 		Checkout checkout = new Checkout(driver);
 		return checkout;
 	}
+	
+	public OrderTest goToOrderPage() {
+		OrderHeader.click();
+		OrderTest orderhistory = new OrderTest(driver);
+		return orderhistory;
+	}
+	
 	public void SelectBox(WebElement selectbox,String Option) {
 		Actions a = new Actions(driver);
 		a.click(selectbox).sendKeys(Option).build().perform();

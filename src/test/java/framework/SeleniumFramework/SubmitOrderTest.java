@@ -8,18 +8,20 @@ import framework.TestComponents.BaseTest;
 import framework.pageobjects.Checkout;
 import framework.pageobjects.LandingPage;
 import framework.pageobjects.OrderConfirmation;
+import framework.pageobjects.OrderTest;
 import framework.pageobjects.PaymentPage;
 import framework.pageobjects.ProductCatalogue;
 
 
 public class SubmitOrderTest extends BaseTest {
 	
+	String ProductName = "ZARA COAT 3";
+	String CountryName = "India";
+	String ExpectedConfirmation = " Thankyou for the order. ";
+	
 	@Test
 	public void submitOrder() throws Exception {
 
-		String ProductName = "ZARA COAT 3";
-		String CountryName = "India";
-		String ExpectedConfirmation = " Thankyou for the order. ";
 		ProductCatalogue productCatalogue = landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
 		productCatalogue.ProductVisible();
 		productCatalogue.getProductByName(ProductName);
@@ -35,6 +37,13 @@ public class SubmitOrderTest extends BaseTest {
 
 		String confirmation = confirm.confirmOrder();
 		confirmation.equalsIgnoreCase(ExpectedConfirmation);
+	}
+	
+	@Test(dependsOnMethods={"submitOrder"})
+	public void OrderHistory() {
+		landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
+		OrderTest orderPage = landingpage.goToOrderPage();
+		orderPage.CheckOrderName(ProductName);
 	}
 
 }
