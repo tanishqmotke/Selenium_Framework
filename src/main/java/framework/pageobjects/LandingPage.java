@@ -6,13 +6,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
+import framework.AbstractComponents.AbstractComponent;
+
+public class LandingPage extends AbstractComponent {
 //This will contain all the locators which belongs to the landing page
 	WebDriver driver; //instance variable
 	
 //whenever we try to initialize the object of the class the constructor is called
 	
 	public LandingPage(WebDriver driver) {
+		super(driver);
 		this.driver = driver; //points to the instance variable
 		PageFactory.initElements(driver, this);
 	}
@@ -28,6 +31,14 @@ public class LandingPage {
 	@FindBy(id="login")
 	WebElement LoginBtn;
 	//WebElement LoginBtn = driver.findElement(By.id("login"));
+	
+	@FindBy(css="div[aria-label='Incorrect email or password.']")
+	WebElement error;
+	
+	public String ErrorMessage() {
+		waitForWebElementToAppear(error);
+		return error.getText();
+	}
 	
 	public ProductCatalogue loginApplication(String email, String password) {
 		userEmail.sendKeys(email);

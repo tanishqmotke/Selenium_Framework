@@ -1,13 +1,15 @@
 package framework.SeleniumFramework;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import framework.TestComponents.BaseTest;
 import framework.pageobjects.Checkout;
 import framework.pageobjects.LandingPage;
 import framework.pageobjects.OrderConfirmation;
 import framework.pageobjects.PaymentPage;
 import framework.pageobjects.ProductCatalogue;
-import junit.framework.Assert;
+
 
 public class SubmitOrderTest extends BaseTest {
 	
@@ -17,8 +19,6 @@ public class SubmitOrderTest extends BaseTest {
 		String ProductName = "ZARA COAT 3";
 		String CountryName = "India";
 		String ExpectedConfirmation = " Thankyou for the order. ";
-
-		LandingPage landingpage = LaunchApplication();
 		ProductCatalogue productCatalogue = landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
 		productCatalogue.ProductVisible();
 		productCatalogue.getProductByName(ProductName);
@@ -34,7 +34,6 @@ public class SubmitOrderTest extends BaseTest {
 
 		String confirmation = confirm.confirmOrder();
 		confirmation.equalsIgnoreCase(ExpectedConfirmation);
-		System.out.println("Executed");
 	}
 
 }

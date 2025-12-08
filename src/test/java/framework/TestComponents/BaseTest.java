@@ -7,6 +7,8 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import framework.pageobjects.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -14,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseTest {
 
 	WebDriver driver;
-	
+	public LandingPage landingpage;
 	public WebDriver initializeDriver() throws IOException {
 		
 		Properties prop = new Properties();
@@ -27,13 +29,17 @@ public class BaseTest {
 		return driver;
 	}
 	
-	public LandingPage LaunchApplication() throws IOException {
-		
+	@BeforeMethod
+	public LandingPage LaunchApplication() throws IOException {	
 		driver = initializeDriver();
-		LandingPage landingpage = new LandingPage(driver);
+		landingpage = new LandingPage(driver);
 		landingpage.goToLandingPage();
 		return landingpage;
 	}
 	
-	
+	@AfterMethod
+	public void tearDown() {
+
+		driver.close();
+	}
 }

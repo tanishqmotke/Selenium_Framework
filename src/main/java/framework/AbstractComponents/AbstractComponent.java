@@ -32,6 +32,11 @@ public class AbstractComponent {
 		Wait.until(ExpectedConditions.invisibilityOfElementLocated(findBy));
 	}
 	
+	public void waitForWebElementToAppear(WebElement error) {
+		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		Wait.until(ExpectedConditions.visibilityOf(error));
+	}
+	
 	public Checkout goToCartPage() {
 		cartHeader.click();
 		Checkout checkout = new Checkout(driver);
