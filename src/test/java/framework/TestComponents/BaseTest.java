@@ -16,7 +16,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-	WebDriver driver;
+	public WebDriver driver;
 	public LandingPage landingpage;
 	
 	public WebDriver initializeDriver() throws IOException {
