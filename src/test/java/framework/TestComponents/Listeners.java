@@ -32,7 +32,6 @@ public void onTestFailure(ITestResult result) {
 	try {
 		screenshortPath = getScreenshot(result.getMethod().getMethodName());
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	test.addScreenCaptureFromPath(screenshortPath,result.getMethod().getMethodName());
