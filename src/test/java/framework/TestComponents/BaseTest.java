@@ -1,6 +1,7 @@
 package framework.TestComponents;
 
 import org.testng.annotations.AfterMethod;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -17,6 +18,7 @@ public class BaseTest {
 
 	WebDriver driver;
 	public LandingPage landingpage;
+	
 	public WebDriver initializeDriver() throws IOException {
 		
 		Properties prop = new Properties();
@@ -29,7 +31,7 @@ public class BaseTest {
 		return driver;
 	}
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public LandingPage LaunchApplication() throws IOException {	
 		driver = initializeDriver();
 		landingpage = new LandingPage(driver);
@@ -37,7 +39,7 @@ public class BaseTest {
 		return landingpage;
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		driver.close();
 	}

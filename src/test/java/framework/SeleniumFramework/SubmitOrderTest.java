@@ -1,13 +1,13 @@
 package framework.SeleniumFramework;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import java.util.HashMap;
+
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import framework.TestComponents.BaseTest;
 import framework.pageobjects.Checkout;
-import framework.pageobjects.LandingPage;
 import framework.pageobjects.OrderConfirmation;
 import framework.pageobjects.OrderTest;
 import framework.pageobjects.PaymentPage;
@@ -19,16 +19,15 @@ public class SubmitOrderTest extends BaseTest {
 	String CountryName = "India";
 	String ExpectedConfirmation = " Thankyou for the order. ";
 
-	@Test(dataProvider="getData",groups= {"Purchase","Smoke"})
-	public void submitOrder(String email,String password, String ProductName) throws Exception {
-
-		ProductCatalogue productCatalogue = landingpage.loginApplication(email,password);
+	@Test(dataProvider="getData",groups= {"Purchase"})
+	public void submitOrder(HashMap<String,String> input) throws Exception {
+		ProductCatalogue productCatalogue = landingpage.loginApplication(input.get("email"),input.get("password"));
 		productCatalogue.ProductVisible();
-		productCatalogue.getProductByName(ProductName);
-		productCatalogue.addToCart(ProductName);
+		productCatalogue.getProductByName(input.get("product"));
+		productCatalogue.addToCart(input.get("product"));
 		Checkout checkout = productCatalogue.goToCartPage();
 
-		Boolean match = checkout.CheckForProduct(ProductName);
+		Boolean match = checkout.CheckForProduct(input.get("product"));
 		Assert.assertTrue(match);
 		PaymentPage paymentpage = checkout.ClickCheckOut();
 
@@ -51,6 +50,17 @@ public class SubmitOrderTest extends BaseTest {
 		// let suppose you want run the above two test with two different datasets
 		// this is the syntax of two dimension array new Object [][] 
 		//we can create two dimension array of String or int as well. int [] [] , String [] []
-		return new Object[] [] {{"tanishqmotke110@gmail.com","Pass@123","ZARA COAT 3"},{"tanishqmotke110@gmail.com","Pass@123","ZARA COAT 3"}}; // let say you want to return two data sets
+		
+		HashMap<Object,Object> map = new HashMap<Object, Object>();
+		map.put("email", "tanishqmotke110@gmail.com");
+		map.put("password","Pass@123");
+		map.put("product","ZARA COAT 3");
+		
+		HashMap<Object,Object> map2 = new HashMap<Object, Object>();
+		map2.put("email", "tanishqmotke110@gmail.com");
+		map2.put("password","Pass@123");
+		map2.put("product","ZARA COAT 3");
+	
+		return new Object[] [] {{map},{map2}}; // let say you want to return two data sets
 	}
 }
