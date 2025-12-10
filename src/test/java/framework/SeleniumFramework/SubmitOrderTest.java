@@ -50,15 +50,6 @@ public class SubmitOrderTest extends BaseTest {
 		Assert.assertTrue(orderPage.CheckOrderName(ProductName));
 	}
 
-	
-	public String getScreenshot(String TestCaseName) throws IOException {
-		TakesScreenshot ts = (TakesScreenshot)driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		File file = new File(System.getProperty("user.dir")+"//reports//"+TestCaseName + ".png");
-		FileUtils.copyFile(source,file);
-		return System.getProperty("user.dir")+"//reports//"+TestCaseName + ".png";
-	}
-	
 	@DataProvider
 	public Object[][] getData() {
 		// let suppose you want run the above two test with two different datasets

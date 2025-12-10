@@ -5,9 +5,9 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtendReporterNG {
 
-	ExtentReports report;
+	static ExtentReports report;
 	
-	public void getReportObject() {
+	public static ExtentReports getReportObject() {
 		String path = System.getProperty("user.dir")+"//reports//index.html";
 		ExtentSparkReporter repo = new ExtentSparkReporter(path);
 		repo.config().setDocumentTitle("Test Result");
@@ -15,6 +15,6 @@ public class ExtendReporterNG {
 		new ExtentReports();
 		report.attachReporter(repo);
 		report.setSystemInfo("Tester", "Tanishq Motke");
-		
+		return report;
 	}
 }
