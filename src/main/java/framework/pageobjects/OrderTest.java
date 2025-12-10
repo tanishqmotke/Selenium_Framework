@@ -18,7 +18,7 @@ public class OrderTest extends AbstractComponent{
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css="tbody tr")
+	@FindBy(css="tr td:nth-child(3)")
 	List<WebElement> listofOrder;
 	
 	public Boolean CheckOrderName(String productName) {

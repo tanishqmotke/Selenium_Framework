@@ -43,7 +43,6 @@ public class SubmitOrderTest extends BaseTest {
 	public void OrderHistory() {
 		landingpage.loginApplication("tanishqmotke110@gmail.com", "Pass@123");
 		OrderTest orderPage = landingpage.goToOrderPage();
-		orderPage.CheckOrderName(ProductName);
+		Assert.assertTrue(orderPage.CheckOrderName(ProductName));
 	}
-
 }
