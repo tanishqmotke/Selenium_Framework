@@ -12,7 +12,7 @@ public class ExtendReporterNG {
 		ExtentSparkReporter repo = new ExtentSparkReporter(path);
 		repo.config().setDocumentTitle("Test Result");
 		
-		new ExtentReports();
+		report=new ExtentReports();
 		report.attachReporter(repo);
 		report.setSystemInfo("Tester", "Tanishq Motke");
 		return report;

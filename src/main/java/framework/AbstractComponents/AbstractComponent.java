@@ -27,7 +27,7 @@ public class AbstractComponent {
 	WebElement OrderHeader;
 	
 	public void waitForElementToAppear(By findBy) {
-		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 		Wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
 	

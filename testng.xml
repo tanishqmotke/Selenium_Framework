@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite parallel="tests" name="Suite">
+
+<!-- Password of the Jenkins username :admin and password : 941d593b0e034424b51fbc206919531b-->
+
+	<listeners>
+		<listener class-name="framework.TestComponents.Listeners" />
+	</listeners>
+	
 	<test thread-count="5" name="Submit Order Test">
 		<classes>
 			<class name="framework.SeleniumFramework.SubmitOrderTest" />
