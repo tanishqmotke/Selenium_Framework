@@ -85,7 +85,7 @@
 				<version>3.5.4</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>Purchase  .xml</suiteXmlFile>
+						<suiteXmlFile>Purchase.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

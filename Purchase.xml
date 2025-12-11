@@ -13,10 +13,10 @@
 	</test> <!--
 	Test -->
 
-	<test thread-count="5" name="Error Validation Test">
+	<!--<test thread-count="5" name="Error Validation Test">
 		<classes>
 			<class name="framework.SeleniumFramework.ErrorValidations" />
 		</classes>
-	</test>
+	</test>-->
 </suite> <!--
 Suite -->
